@@ -1104,4 +1104,14 @@ app.get('/dashboard', (req, res) => {
   `);
 });
 
+// إعداد مسار رئيسي
+app.get('/', (req, res) => {
+    res.send('<h1>WhatsApp Bot is Running!</h1>');
+});
+
+// تشغيل الخادم
+app.listen(PORT, () => {
+    console.log(`🚀 الخادم يعمل على http://localhost:${PORT}`);
+});
+
 
