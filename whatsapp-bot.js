@@ -235,7 +235,7 @@ console.log('📋 محتوى reportsLog:', reportsLog);
 
 startSock()
 
-// اجعل صفحة التقرير هي الصفحة الرئيسية (الوكل)
+// اجعل صفحة التقرير هي الصفحة الرئيسية
 app.get('/', (req, res) => {
   res.redirect('/report');
 });
@@ -246,7 +246,7 @@ app.get('/old', (req, res) => {
   const qrSection = (!sock || sock.ws.readyState !== sock.ws.OPEN) && lastQRCode
     ? `<div class="alert alert-warning text-center">
         <h5>امسح الباركود للاتصال بواتساب</h5>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(lastQRCode)}&size=200x200" />
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(lastQRCode.trim().replace(/\s+/g, ''))}&size=200x200" />
       </div>`
     : ''
 
@@ -324,10 +324,6 @@ app.post('/send', async (req, res) => {
     console.error(error)
     res.send('<script>alert("❌ فشل في إرسال الرسالة.");window.history.back();</script>')
   }
-})
-
-app.listen(3000, () => {
-  console.log('🚀 الخادم يعمل على http://localhost:3000')
 })
 
 // باقي المسارات (qr, status, disconnect, reconnect, auth, logout, health, version, config, commands) كما هي...
@@ -1108,10 +1104,8 @@ app.get('/dashboard', (req, res) => {
 app.get('/', (req, res) => {
     res.send('<h1>WhatsApp Bot is Running!</h1>');
 });
+const PORT = process.env.PORT || 3000;
 
-// تشغيل الخادم
 app.listen(PORT, () => {
-    console.log(`🚀 الخادم يعمل على http://localhost:${PORT}`);
-});
-
-
+  console.log(`🚀 KaMa www http://localhost:${PORT}`);
+})
