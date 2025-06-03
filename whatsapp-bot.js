@@ -205,6 +205,7 @@ console.log('📋 محتوى reportsLog:', reportsLog);
       lastQRCode = qr;
       const qrcode = await import('qrcode-terminal');
       qrcode.default.generate(qr, { small: true });
+      console.log(`🔗 رابط رمز QR: http://localhost:${PORT}/qr`);
     }
 
     if (connection === 'open') {
@@ -1109,3 +1110,24 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 KaMa www http://localhost:${PORT}`);
 })
+
+// مسار لعرض صورة QR
+app.get('/qr', (req, res) => {
+  if (!lastQRCode) {
+    return res.send('<h1>❌ لا يوجد رمز QR متاح حالياً.</h1>');
+  }
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(lastQRCode.trim().replace(/\s+/g, ''))}&size=200x200`;
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="ar">
+    <head>
+      <meta charset="UTF-8">
+      <title>عرض رمز QR</title>
+    </head>
+    <body style="text-align: center; font-family: Arial, sans-serif;">
+      <h1>📱 رمز QR للاتصال بواتساب</h1>
+      <img src="${qrImageUrl}" alt="رمز QR" style="margin-top: 20px;">
+    </body>
+    </html>
+  `);
+});
