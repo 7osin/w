@@ -5,8 +5,8 @@
   "type": "module",
   "description": "A WhatsApp bot for sending reminders",
   "scripts": {
-  "start": "node whatsapp-bot.js"
-},
+    "start": "node whatsapp-bot.js"
+  },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "^6.7.18",

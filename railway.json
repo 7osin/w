@@ -1,0 +1,9 @@
+{
+  "build": {
+    "cmd": "npm install",
+    "output": null
+  },
+  "run": {
+    "cmd": "node whatsapp-bot.js"
+  }
+}
