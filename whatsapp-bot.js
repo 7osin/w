@@ -205,7 +205,7 @@ console.log('📋 محتوى reportsLog:', reportsLog);
       lastQRCode = qr;
       const qrcode = await import('qrcode-terminal');
       qrcode.default.generate(qr, { small: true });
-      console.log(`🔗 رابط رمز QR: http://localhost:${PORT}/qr`);
+      console.log(`🔗 رابط رمز QR: k39-production.up.railway.app/qr`);
     }
 
     if (connection === 'open') {
