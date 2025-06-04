@@ -205,7 +205,7 @@ console.log('📋 محتوى reportsLog:', reportsLog);
       lastQRCode = qr;
       const qrcode = await import('qrcode-terminal');
       qrcode.default.generate(qr, { small: true });
-      console.log(`🔗 رابط رمز QR: https://k39.up.railway.app/public/qr.png`);
+      console.log(`🔗 رابط رمز QR: https://k39.up.railway.app/qr`);
     }
 
     if (connection === 'open') {
@@ -452,6 +452,12 @@ app.get('/report', (req, res) => {
   </a>
 </div>
   </div>
+      <!-- زر جديد لعرض رمز QR -->
+    <div style="text-align:center;margin:20px;">
+      <a href="/qr" class="export-btn" style="background:#0d6efd;color:#fff;padding:10px 30px;border-radius:8px;font-size:18px;text-decoration:none;display:inline-block;">
+        📱 عرض رمز QR
+      </a>
+    </div>
   <!-- زر رسالة جديدة تحت زر الحفظ -->
 <div style="text-align:center;margin:20px;">
   <button id="customMsgBtn" class="export-btn" style="background:#0d6efd;">✉️ رسالة جديدة</button>
