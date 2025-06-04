@@ -9,4 +9,5 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  console.log('🔗 رابط رمز QR: https://k39-production.up.railway.app/qr');
 });
